@@ -17,7 +17,7 @@ app = FastAPI(
 # Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:8080"],
     allow_methods=["*"],
     allow_headers=["*"]
 )
@@ -64,3 +64,4 @@ def predict_churn_api(data: CustomerInput):
         "churn_probability": round(float(churn_prob), 2),
         "predicted_class": "Churn" if churn_class == 1 else "No Churn"
     }
+#uvicorn main:app --reload
